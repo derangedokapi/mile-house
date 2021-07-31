@@ -27,9 +27,14 @@ public class SceneRenderer : MonoBehaviour
 
     private void AdjustRender() {
         if (player.transform.hasChanged) {
+            Debug.Log("going to render tree structure");
+
             float playerX = player.GetPlayerXPos();
             // add onto the spring tree list
             float lastPos = playerX - starterAmountToSubtract;
+            if (springTreePositions.Count > 0) {
+                lastPos = springTreePositions[springTreePositions.Count - 1];
+            }
             while (lastPos < (playerX + starterAmountToSubtract)) {
                 if (springTreePositions.Count > 0) {
                     lastPos = springTreePositions[springTreePositions.Count - 1];
@@ -38,7 +43,20 @@ public class SceneRenderer : MonoBehaviour
                 springTreePositions.Add(newPos);
             }
             springTreePositions.Sort();
-            RenderObjects(springTree,springTreePositions);
+            
+            List<float> springTreesToRender = new List<float>();
+            
+            foreach (float treeFloat in springTreePositions) {
+                float lowerBound = playerX - starterAmountToSubtract;
+                float upperBound = playerX + starterAmountToSubtract;
+                if ((treeFloat > lowerBound) && (treeFloat < upperBound)) {
+                    springTreesToRender.Add(treeFloat);
+                } else {
+                    Destroy(GameObject.Find(treeFloat.ToString()));
+                }
+            }
+            
+            RenderObjects(springTree,springTreesToRender);
            // Debug.Log("player at "+playerX+" changed? "+player.transform.hasChanged);
             
         }
@@ -47,9 +65,14 @@ public class SceneRenderer : MonoBehaviour
     private void RenderObjects(GameObject obj, List<float> positionList) {
         Debug.Log("rendering "+obj+" last position "+positionList[positionList.Count - 1]);
         for (int i = 0; i < positionList.Count; i++) {
-            GameObject newTree = Instantiate(obj, new Vector3(positionList[i],player.transform.position.y,player.transform.position.z),Quaternion.identity);
-            newTree.transform.parent = springTreeParent.transform;
+            if (!GameObject.Find(positionList[i].ToString())) {
+                GameObject newTree = Instantiate(obj, new Vector3(positionList[i],player.transform.position.y,player.transform.position.z),Quaternion.identity);
+                newTree.transform.parent = springTreeParent.transform;
+                newTree.name = positionList[i].ToString();
+            } else {
+                Debug.Log(" already exists");
+            } 
         }
-        
+        player.transform.hasChanged = false;
     }
 }
