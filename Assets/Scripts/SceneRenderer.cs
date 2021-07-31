@@ -14,7 +14,9 @@ public class SceneRenderer : MonoBehaviour
     public int springTreeUpperLimit = 10;
     public float springTreeMinDistance = 1f;
     public float springTreeMaxDistance = 2f;
+    public float springTreeStarterY = 1.67f;
     public float starterAmountToSubtract = 20f;
+    
 
     private void Start() {
         player = FindObjectOfType<PlayerMovement>();
@@ -66,7 +68,8 @@ public class SceneRenderer : MonoBehaviour
         Debug.Log("rendering "+obj+" last position "+positionList[positionList.Count - 1]);
         for (int i = 0; i < positionList.Count; i++) {
             if (!GameObject.Find(positionList[i].ToString())) {
-                GameObject newTree = Instantiate(obj, new Vector3(positionList[i],player.transform.position.y,player.transform.position.z),Quaternion.identity);
+                float newY = springTreeStarterY + Random.Range(-0.2f,0.2f);
+                GameObject newTree = Instantiate(obj, new Vector3(positionList[i],newY,player.transform.position.z),Quaternion.identity);
                 newTree.transform.parent = springTreeParent.transform;
                 newTree.name = positionList[i].ToString();
             } else {
