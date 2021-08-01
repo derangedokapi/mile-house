@@ -13,11 +13,12 @@ public class BackgroundScenery : MonoBehaviour
     private void Start() {
         player = FindObjectOfType<PlayerMovement>();
         myMaterial = GetComponent<Renderer>().material;
-        offSet = new Vector2(backgroundScrollSpeed, 0f);
+        
     }
     void Update()
     {
         if (player.transform.hasChanged) {
+            offSet = new Vector2(backgroundScrollSpeed, 0f);
             transform.position = new Vector3 (player.transform.position.x, transform.position.y, transform.position.z);
             myMaterial.mainTextureOffset += offSet * Time.deltaTime;
         }

@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1379291007, guid: a05749a3057a71d4e8975f1c60f84e9d, type: 3}
       propertyPath: backgroundScrollSpeed
-      value: 0.1
+      value: 0.005
       objectReference: {fileID: 0}
     - target: {fileID: 1111075810783674129, guid: a05749a3057a71d4e8975f1c60f84e9d, type: 3}
       propertyPath: m_RootOrder
