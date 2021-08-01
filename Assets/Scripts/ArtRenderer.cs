@@ -28,6 +28,7 @@ public class ArtRenderer : MonoBehaviour
         player = FindObjectOfType<PlayerMovement>();
         artPrefix = gameObject.name;
         currentSeason = "spring";
+        RenderObjects(PrepArtObject(),PrepArtGeneration());
     }
 
     void Update()
@@ -37,7 +38,17 @@ public class ArtRenderer : MonoBehaviour
 
     private void AdjustRender() {
         if (player.IsPlayerMoving()) {
+           RenderObjects(PrepArtObject(),PrepArtGeneration());
+        }
+    }
 
+    private GameObject PrepArtObject() {
+        // once we have seasons set up we'll put in logic to return the right season object
+        // for now, hardcoding to spring
+        return springObject;
+    }
+
+    private List<float> PrepArtGeneration() {
             float playerX = player.GetPlayerXPos();
             // add onto the spring tree list
             float lastPos = playerX - starterAmountToSubtract;
@@ -65,11 +76,8 @@ public class ArtRenderer : MonoBehaviour
                 }
             }
             
-            GameObject artObject = springObject;
-            RenderObjects(artObject,artToRender);
-           // Debug.Log("player at "+playerX+" changed? "+player.transform.hasChanged);
+            return artToRender;
             
-        }
     }
 
     private void RenderObjects(GameObject obj, List<float> positionList) {
