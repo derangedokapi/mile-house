@@ -13,7 +13,6 @@ public class BackgroundScenery : MonoBehaviour
     private void Start() {
         player = FindObjectOfType<PlayerMovement>();
         myMaterial = GetComponent<Renderer>().material;
-        offSet = new Vector2(backgroundScrollSpeed, 0f);
     }
     void Update()
     {

@@ -19,7 +19,7 @@ public class ArtRenderer : MonoBehaviour
     public float starterAmountToSubtract = 20f;
     public float yRandomize = 0.1f;
 
-    public string currentSeason;
+    string currentSeason;
 
     string artPrefix;
 

@@ -184,57 +184,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a05749a3057a71d4e8975f1c60f84e9d, type: 3}
---- !u!1 &136146329
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 136146331}
-  - component: {fileID: 136146330}
-  m_Layer: 0
-  m_Name: SceneRenderer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &136146330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 136146329}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bed97665861080409421a412993dfdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  springTreePositions: []
-  springTree: {fileID: 7682579869891185909, guid: 0db3acc10fc36c04aa2c6b1bc9eb076f, type: 3}
-  springTreeParent: {fileID: 1183483378}
-  springTreeUpperLimit: 6
-  springTreeMinDistance: 1
-  springTreeMaxDistance: 4
-  springTreeStarterY: -1.3
-  starterAmountToSubtract: 40
---- !u!4 &136146331
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 136146329}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &403056640
 GameObject:
   m_ObjectHideFlags: 3
@@ -394,7 +343,7 @@ Transform:
   m_Children:
   - {fileID: 403056641}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
@@ -543,7 +492,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1289809474}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1183483380
 MonoBehaviour:
@@ -567,7 +516,6 @@ MonoBehaviour:
   starterY: -1.6
   starterAmountToSubtract: 20
   yRandomize: 0.1
-  currentSeason: 
 --- !u!1 &1289809473
 GameObject:
   m_ObjectHideFlags: 0
@@ -595,9 +543,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1845619101}
   - {fileID: 1183483379}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1320034672
 GameObject:
@@ -730,3 +679,56 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &1845619100
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1845619101}
+  - component: {fileID: 1845619102}
+  m_Layer: 0
+  m_Name: Middle Ground Hills
+  m_TagString: SpringTrees
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1845619101
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845619100}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1289809474}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1845619102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845619100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8edea5c12349ea148941b9dd45cfd37c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  artPositions: []
+  springObject: {fileID: 137876130526122951, guid: 20f292fb170dfe74ca547b22a13a17fa, type: 3}
+  summerObject: {fileID: 0}
+  fallObject: {fileID: 0}
+  winterObject: {fileID: 0}
+  minDistance: 18
+  maxDistance: 18
+  starterY: -4.9
+  starterAmountToSubtract: 20
+  yRandomize: 0
