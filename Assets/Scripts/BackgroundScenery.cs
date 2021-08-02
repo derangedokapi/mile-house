@@ -5,6 +5,7 @@ using UnityEngine;
 public class BackgroundScenery : MonoBehaviour
 {
     PlayerMovement player;
+    public bool moveWithPlayer = true;
 
     [SerializeField] float backgroundScrollSpeed = 0.003f;
     Material myMaterial;
@@ -16,10 +17,14 @@ public class BackgroundScenery : MonoBehaviour
     }
     void Update()
     {
-        if (player.IsPlayerMoving()) {
+        if (player.IsPlayerMoving() || !moveWithPlayer) {
 
             transform.position = new Vector3 (player.transform.position.x, transform.position.y, transform.position.z);
-            offSet = new Vector2(backgroundScrollSpeed * player.GetPlayerVelocitySign(), 0f);
+            float moveSpeed = backgroundScrollSpeed;
+            if (moveWithPlayer) {
+                moveSpeed = moveSpeed * player.GetPlayerVelocitySign();
+            }
+            offSet = new Vector2(moveSpeed, 0f);
             myMaterial.mainTextureOffset += offSet * Time.deltaTime;
         }
     }

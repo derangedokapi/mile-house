@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     {
         
         Run();
-        //FlipSprite();
+        FlipSprite();
     }
 
     private void Run() {
