@@ -22,7 +22,7 @@ public class BackgroundScenery : MonoBehaviour
             transform.position = new Vector3 (player.transform.position.x, transform.position.y, transform.position.z);
             float moveSpeed = backgroundScrollSpeed;
             if (moveWithPlayer) {
-                moveSpeed = moveSpeed * player.GetPlayerVelocitySign();
+                moveSpeed = moveSpeed * (player.runSpeed * 0.1f) * player.GetPlayerVelocitySign();
             }
             offSet = new Vector2(moveSpeed, 0f);
             myMaterial.mainTextureOffset += offSet * Time.deltaTime;

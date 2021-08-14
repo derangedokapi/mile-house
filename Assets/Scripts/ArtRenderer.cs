@@ -23,6 +23,8 @@ public class ArtRenderer : MonoBehaviour
 
     string artPrefix;
 
+    float amountToSubtract;
+
 
     private void Start() {
         player = FindObjectOfType<PlayerMovement>();
@@ -33,6 +35,7 @@ public class ArtRenderer : MonoBehaviour
 
     void Update()
     {
+        amountToSubtract = starterAmountToSubtract + player.runSpeed;
         AdjustRender();
     }
 
@@ -51,11 +54,11 @@ public class ArtRenderer : MonoBehaviour
     private List<float> PrepArtGeneration() {
             float playerX = player.GetPlayerXPos();
             // add onto the spring tree list
-            float lastPos = playerX - starterAmountToSubtract;
+            float lastPos = playerX - amountToSubtract;
             if (artPositions.Count > 0) {
                 lastPos = artPositions[artPositions.Count - 1];
             }
-            while (lastPos < (playerX + starterAmountToSubtract)) {
+            while (lastPos < (playerX + amountToSubtract)) {
                 if (artPositions.Count > 0) {
                     lastPos = artPositions[artPositions.Count - 1];
                 }
@@ -67,8 +70,8 @@ public class ArtRenderer : MonoBehaviour
             List<float> artToRender = new List<float>();
             
             foreach (float artFloat in artPositions) {
-                float lowerBound = playerX - starterAmountToSubtract;
-                float upperBound = playerX + starterAmountToSubtract;
+                float lowerBound = playerX - amountToSubtract;
+                float upperBound = playerX + amountToSubtract;
                 if ((artFloat > lowerBound) && (artFloat < upperBound)) {
                     artToRender.Add(artFloat);
                 } else {

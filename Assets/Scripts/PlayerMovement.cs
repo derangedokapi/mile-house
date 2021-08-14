@@ -5,7 +5,7 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] float runSpeed = 5f;
+    public float runSpeed = 5f;
     Rigidbody2D myRigidBody;
     //Animator myAnimator;
     bool isMoving = false;
