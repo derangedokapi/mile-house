@@ -41,7 +41,6 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public bool IsPlayerMoving() {
-        Debug.Log(myRigidBody.velocity.x);
         return(Mathf.Abs(myRigidBody.velocity.x) > Mathf.Epsilon);
     }
 
