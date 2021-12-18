@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityStandardAssets.CrossPlatformInput;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -16,11 +16,15 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
-        
-        Run();
-        FlipSprite();
+        if (!Touchscreen.current.primaryTouch.press.isPressed) {
+            Debug.Log("not touching");
+        } else {
+            Debug.Log("touching");
+        }
+        //Run();
+        //FlipSprite();
     }
-
+/*
     private void Run() {
         float controlThrow = CrossPlatformInputManager.GetAxis("Horizontal"); // from -1 and +1
         Vector2 playerVelocity = new Vector2(controlThrow * runSpeed, myRigidBody.velocity.y);
@@ -39,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
            // myAnimator.SetBool("isRunning",false);
         }
     }
+*/
 
     public bool IsPlayerMoving() {
         return(Mathf.Abs(myRigidBody.velocity.x) > Mathf.Epsilon);
