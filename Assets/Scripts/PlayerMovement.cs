@@ -21,16 +21,18 @@ public class PlayerMovement : MonoBehaviour
         } else {
             Debug.Log("touching");
         }
-        //Run();
+        Run();
         //FlipSprite();
     }
-/*
+
     private void Run() {
-        float controlThrow = CrossPlatformInputManager.GetAxis("Horizontal"); // from -1 and +1
+        //float controlThrow = CrossPlatformInputManager.GetAxis("Horizontal"); // from -1 and +1
+        float controlThrow = 1;
         Vector2 playerVelocity = new Vector2(controlThrow * runSpeed, myRigidBody.velocity.y);
         myRigidBody.velocity = playerVelocity;
     }
 
+/*
     private void FlipSprite() {
         bool playerHasHorizontalSpeed = IsPlayerMoving(); //Mathf.Abs(myRigidBody.velocity.x) > Mathf.Epsilon;
         // abs is the value positive or negative, e.g. turns -5 into 5. basically saying if it has eitehr pos or neg velocity = true
