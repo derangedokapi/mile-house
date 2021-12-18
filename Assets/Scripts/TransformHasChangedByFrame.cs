@@ -8,7 +8,6 @@ public class TransformHasChangedByFrame : MonoBehaviour
  
     void Start()
     {
-        
         StartCoroutine(EndOfFrameReset());
     }
  

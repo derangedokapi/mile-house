@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     //Animator myAnimator;
     bool isMoving = false;
 
+    float playerDirection = 0;
+
     void Start() {
         myRigidBody = GetComponent<Rigidbody2D>();
         //myAnimator = GetComponent<Animator>();
@@ -22,17 +24,26 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("touching");
         }
         Run();
-        //FlipSprite();
+        FlipSprite();
     }
 
     private void Run() {
         //float controlThrow = CrossPlatformInputManager.GetAxis("Horizontal"); // from -1 and +1
-        float controlThrow = 1;
+        
+        //var myInputAction = inputMap.AddAction("Horizontal");
+ 
+       /* myInputAction.AddCompositeBinding("Axis")
+        .With("Negative", <Keyboard>/a)
+        .With("Positive", <Keyboard>/d);*/
+        
+        //myInputAction.passThrough = true;
+
+        float controlThrow = playerDirection; //myInputAction.GetCompositeBinding("Axis");
         Vector2 playerVelocity = new Vector2(controlThrow * runSpeed, myRigidBody.velocity.y);
         myRigidBody.velocity = playerVelocity;
     }
 
-/*
+
     private void FlipSprite() {
         bool playerHasHorizontalSpeed = IsPlayerMoving(); //Mathf.Abs(myRigidBody.velocity.x) > Mathf.Epsilon;
         // abs is the value positive or negative, e.g. turns -5 into 5. basically saying if it has eitehr pos or neg velocity = true
@@ -45,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
            // myAnimator.SetBool("isRunning",false);
         }
     }
-*/
+
 
     public bool IsPlayerMoving() {
         return(Mathf.Abs(myRigidBody.velocity.x) > Mathf.Epsilon);
@@ -58,5 +69,9 @@ public class PlayerMovement : MonoBehaviour
 
     public float GetPlayerXPos() {
         return(transform.position.x);
+    }
+
+    public void SetDirection(float direction) {
+        playerDirection = direction;
     }
 }
