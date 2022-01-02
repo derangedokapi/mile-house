@@ -58,13 +58,20 @@ public class ArtRenderer : MonoBehaviour
             if (artPositions.Count > 0) {
                 lastPos = artPositions[artPositions.Count - 1];
             }
+            bool criteria = lastPos < (playerX + amountToSubtract);
+            if (criteria || playerX < 0) {
+                Debug.Log("lastpos = "+lastPos+"playerX = "+ playerX+" combined "+(playerX + amountToSubtract)+" criteria "+criteria);
+            }
             while (lastPos < (playerX + amountToSubtract)) {
                 if (artPositions.Count > 0) {
                     lastPos = artPositions[artPositions.Count - 1];
                 }
+                //Debug.Log("lastPos = "+lastPos+" criteria < "+(lastPos < (playerX + amountToSubtract)));
                 float newPos = lastPos + Random.Range(minDistance,maxDistance);
                 artPositions.Add(newPos);
             }
+            
+            
             artPositions.Sort();
             
             List<float> artToRender = new List<float>();
@@ -84,7 +91,7 @@ public class ArtRenderer : MonoBehaviour
     }
 
     private void RenderObjects(GameObject obj, List<float> positionList) {
-       // Debug.Log("rendering "+obj+" last position "+positionList[positionList.Count - 1]);
+       //Debug.Log("rendering "+obj); //+" last position "+positionList[positionList.Count - 1]);
         for (int i = 0; i < positionList.Count; i++) {
             if (!GameObject.Find(artPrefix+positionList[i].ToString())) {
                 float newY = starterY + Random.Range(-yRandomize,yRandomize);

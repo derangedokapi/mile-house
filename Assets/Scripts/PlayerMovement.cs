@@ -18,11 +18,13 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
+    /*
         if (!Touchscreen.current.primaryTouch.press.isPressed) {
             Debug.Log("not touching");
         } else {
             Debug.Log("touching");
         }
+        */
         Run();
         FlipSprite();
     }
@@ -59,7 +61,9 @@ public class PlayerMovement : MonoBehaviour
 
 
     public bool IsPlayerMoving() {
-        return(Mathf.Abs(myRigidBody.velocity.x) > Mathf.Epsilon);
+        bool playerMoving = Mathf.Abs(myRigidBody.velocity.x) > Mathf.Epsilon;
+        //Debug.Log("is player moving? "+playerMoving);
+        return(playerMoving);
     }
 
     public float GetPlayerVelocitySign() {
@@ -73,5 +77,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void SetDirection(float direction) {
         playerDirection = direction;
+    }
+
+    public void StartOfRoad() {
+        SetDirection(0);
     }
 }
