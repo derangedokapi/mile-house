@@ -59,9 +59,9 @@ public class ArtRenderer : MonoBehaviour
                 lastPos = artPositions[artPositions.Count - 1];
             }
             bool criteria = lastPos < (playerX + amountToSubtract);
-            if (criteria || playerX < 0) {
+           /* if (criteria || playerX < 0) {
                 Debug.Log("lastpos = "+lastPos+"playerX = "+ playerX+" combined "+(playerX + amountToSubtract)+" criteria "+criteria);
-            }
+            } */
             while (lastPos < (playerX + amountToSubtract)) {
                 if (artPositions.Count > 0) {
                     lastPos = artPositions[artPositions.Count - 1];
